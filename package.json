@@ -1,0 +1,41 @@
+{
+  "name": "spotify-to-jekyll",
+  "version": "1.0.0",
+  "description": "Turn a Spotify playlist into a Jekyll post",
+  "main": "index.js",
+  "bin": {
+    "spotify-to-jekyll": "./bin/playlist.js"
+  },
+  "scripts": {
+    "test": "tape test/*.js && eslint *.js test/*.js",
+    "precommit": "lint-staged",
+    "lint": "eslint *.js test/*.js"
+  },
+  "author": "Katy DeCorah",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^8.2.4",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-promise": "^3.8.0",
+    "husky": "^0.14.3",
+    "jimp": "^0.2.28",
+    "lint-staged": "^7.2.0",
+    "minimist": "^1.2.0",
+    "moment": "^2.22.2",
+    "prettier": "^1.13.5",
+    "request": "^2.87.0",
+    "tape": "^4.9.1",
+    "underscore": "^1.9.1"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint",
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "spotify-web-api-node": "^3.1.1"
+  }
+}
