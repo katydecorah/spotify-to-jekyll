@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^8.2.4",
-    "eslint": "^4.19.1",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-promise": "^3.8.0",
     "husky": "^0.14.3",
