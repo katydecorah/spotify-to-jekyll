@@ -14,7 +14,7 @@
   "author": "Katy DeCorah",
   "license": "ISC",
   "devDependencies": {
-    "babel-eslint": "^8.2.4",
+    "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-promise": "^3.8.0",
