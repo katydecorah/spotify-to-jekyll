@@ -66,7 +66,7 @@ module.exports.getTracks = tracks => {
 module.exports.createPost = data => {
   return new Promise((resolve, reject) => {
     fs.writeFile(
-      `_posts/playlists/${moment().format('YYYY-MM-DD')}-${
+      `playlists/_posts/${moment().format('YYYY-MM-DD')}-${
         data.formatted_name
       }.md`,
       module.exports.buildPost(data),
@@ -79,11 +79,9 @@ module.exports.createPost = data => {
 };
 
 module.exports.buildPost = data => {
-  let contents = `---\nlayout: post\ntitle: ${
-    data.name
-  }\ncategory: playlists\nspotify: ${data.url}\nimage: img/playlists/${
-    data.formatted_name
-  }.png\npermalink: /playlists/${
+  let contents = `---\ntitle: ${data.name}\nspotify: ${
+    data.url
+  }\nimage: img/playlists/${data.formatted_name}.png\npermalink: /playlists/${
     data.formatted_name
   }/\n---\n\n[Listen on Spotify](${data.url})\n\n`;
   data.tracks.map(track => {
@@ -109,9 +107,11 @@ module.exports.buildNewMaster = data => {
   let content = fs.readFileSync('_data/playlists.yml').toString('utf8');
   content += `- playlist: ${data.name}\n  spotify: ${data.url}\n  tracks:\n`;
   data.tracks.map(track => {
-    content += `  - track: "${track.name}"\n    artist: "${
+    content += `  - track: ${JSON.stringify(
+      track.name
+    )}\n    artist: ${JSON.stringify(
       track.artist
-    }"\n    album: "${track.album}"\n`;
+    )}\n    album: ${JSON.stringify(track.album)}\n`;
   });
   return content;
 };
