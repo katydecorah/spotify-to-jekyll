@@ -37,5 +37,16 @@
   "dependencies": {
     "meow": "^7.0.1",
     "spotify-web-api-node": "^4.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katydecorah/spotify-to-jekyll.git"
+  },
+  "bugs": {
+    "url": "https://github.com/katydecorah/spotify-to-jekyll/issues"
+  },
+  "homepage": "https://github.com/katydecorah/spotify-to-jekyll#readme"
 }
