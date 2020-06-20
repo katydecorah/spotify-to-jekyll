@@ -15,13 +15,13 @@ echo "export SpotifyClientSecret=0000ffff0000ffff0000ffff0000ffff0000ffff" >> ~/
 Install the app:
 
 ```
-npm install -g
+npm install spotify-to-jekyll
 ```
 
 Open the directory you wish to download the Spotify playlist and run in terminal:
 
 ```
-spotify-to-jekyll --playlist=<playlist-id>
+spotify-to-jekyll <playlist-id>
 ```
 
 You can find your playlist's ID in its URL.
