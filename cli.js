@@ -1,15 +1,24 @@
 #!/usr/bin/env node
 
-const script = require("../index.js");
-const argv = require("minimist")(process.argv.slice(2));
+"use strict";
 
-if (!argv.playlist) {
-  console.log("Usage:   spotify-to-jekyll --playlist=<playlist-id>");
-  console.log("Example: spotify-to-jekyll --playlist=0000111100001111");
-  process.exit(1);
+const meow = require("meow");
+const script = require(".");
+
+const cli = meow(`
+	Usage
+	  $ spotify-to-jekyll <playlist_id>
+
+	Examples
+	  $ spotify-to-jekyll 0000111100001111
+`);
+
+if (!cli.input.length) {
+  console.log(cli.help);
+  return;
 }
 
-process.env.SpotifyPlaylist = argv.playlist;
+process.env.SpotifyPlaylist = cli.input;
 
 script.playlist({}, null, (err, callback) => {
   if (err) {

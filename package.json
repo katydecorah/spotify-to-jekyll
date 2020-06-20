@@ -9,6 +9,9 @@
     "lint": "eslint *.js test/*.js",
     "pretty-quick": "pretty-quick"
   },
+  "bin": {
+    "spotify-to-jekyll": "cli.js"
+  },
   "author": "Katy DeCorah",
   "license": "ISC",
   "devDependencies": {
@@ -32,6 +35,7 @@
     }
   },
   "dependencies": {
+    "meow": "^7.0.1",
     "spotify-web-api-node": "^4.0.0"
   }
 }
