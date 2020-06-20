@@ -2,7 +2,7 @@
   "name": "spotify-to-jekyll",
   "version": "0.1.0",
   "description": "Turn a Spotify playlist into a Jekyll post",
-  "main": "cli.js",
+  "main": "index.js",
   "scripts": {
     "test": "tape test/*.js && eslint *.js test/*.js",
     "precommit": "lint-staged",
