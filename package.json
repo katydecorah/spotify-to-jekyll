@@ -20,14 +20,11 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-promise": "^4.2.1",
     "husky": "^4.2.5",
-    "jimp": "^0.13.0",
     "minimist": "^1.2.5",
-    "moment": "^2.27.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "request": "^2.88.2",
-    "tape": "^5.0.1",
-    "underscore": "^1.10.2"
+    "tape": "^5.0.1"
   },
   "husky": {
     "hooks": {
@@ -35,8 +32,11 @@
     }
   },
   "dependencies": {
+    "jimp": "^0.13.0",
+    "moment": "^2.27.0",
     "meow": "^7.0.1",
-    "spotify-web-api-node": "^4.0.0"
+    "spotify-web-api-node": "^4.0.0",
+    "underscore": "^1.10.2"
   },
   "directories": {
     "test": "test"

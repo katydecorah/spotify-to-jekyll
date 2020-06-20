@@ -3,7 +3,7 @@
 "use strict";
 
 const meow = require("meow");
-const script = require(".");
+const script = require("./index.js");
 
 const cli = meow(`
 	Usage
