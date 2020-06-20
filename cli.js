@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const script = require('../index.js');
-const argv = require('minimist')(process.argv.slice(2));
+const script = require("../index.js");
+const argv = require("minimist")(process.argv.slice(2));
 
 if (!argv.playlist) {
-  console.log('Usage:   spotify-to-jekyll --playlist=<playlist-id>');
-  console.log('Example: spotify-to-jekyll --playlist=0000111100001111');
+  console.log("Usage:   spotify-to-jekyll --playlist=<playlist-id>");
+  console.log("Example: spotify-to-jekyll --playlist=0000111100001111");
   process.exit(1);
 }
 
