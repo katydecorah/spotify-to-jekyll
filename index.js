@@ -137,7 +137,7 @@ module.exports.saveImage = (data) => {
   return new Promise((resolve, reject) => {
     Jimp.read(data.image, (err, img) => {
       if (err) return reject(err);
-      img.rgba(false).write(`${process.env.ImgDir}/${data.formatted_name}.png`);
+      img.write(`${process.env.ImgDir}/${data.formatted_name}.png`);
       resolve("Done!");
     });
   });
