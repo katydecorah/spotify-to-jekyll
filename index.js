@@ -20,7 +20,7 @@ module.exports.playlist = (event, context, callback) => {
     .then((data) => module.exports.createPost(data))
     // save tracks to playlists.yml
     .then((data) => module.exports.updateMain(data))
-    // save image to img/playlists/
+    // save image to imgDir
     .then((data) => module.exports.saveImage(data))
     .then((data) => callback(null, data))
     .catch((err) => callback(err));
@@ -74,7 +74,7 @@ module.exports.getTracks = (tracks) => {
 module.exports.createPost = (data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(
-      `playlists/_posts/${moment().format("YYYY-MM-DD")}-${
+      `${process.env.PostsDir}/${moment().format("YYYY-MM-DD")}-${
         data.formatted_name
       }.md`,
       module.exports.buildPost(data),
@@ -87,7 +87,7 @@ module.exports.createPost = (data) => {
 };
 
 module.exports.buildPost = (data) => {
-  let contents = `---\ntitle: ${data.name}\nspotify: ${data.url}\nimage: img/playlists/${data.formatted_name}.png\npermalink: /playlists/${data.formatted_name}/\n---\n\n[Listen on Spotify](${data.url})\n\n`;
+  let contents = `---\ntitle: ${data.name}\nspotify: ${data.url}\nimage: ${process.env.ImgDir}/${data.formatted_name}.png\npermalink: /playlists/${data.formatted_name}/\n---\n\n[Listen on Spotify](${data.url})\n\n`;
   data.tracks.map((track) => {
     contents += `* ${track.name}, ${track.artist}\n`;
   });
@@ -124,7 +124,7 @@ module.exports.saveImage = (data) => {
   return new Promise((resolve, reject) => {
     Jimp.read(data.image, (err, img) => {
       if (err) return reject(err);
-      img.rgba(false).write(`img/playlists/${data.formatted_name}.png`);
+      img.rgba(false).write(`${process.env.ImgDir}/${data.formatted_name}.png`);
       resolve("done!");
     });
   });
