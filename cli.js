@@ -13,6 +13,7 @@ const cli = meow(
 	Options
       --postsDir, -p  Relative path to your _posts folder
 			--imgDir, -i  Relative path to your images folder
+			--updateDataFile, -d  Update a data file with your playlist data
 
 	Examples
 	  $ spotify-to-jekyll 0000111100001111
@@ -30,6 +31,11 @@ const cli = meow(
         default: "img",
         alias: "i",
       },
+      updateDataFile: {
+        type: "boolean",
+        default: false,
+        alias: "d",
+      },
     },
   }
 );
@@ -42,6 +48,7 @@ if (!cli.input.length) {
 process.env.SpotifyPlaylist = cli.input;
 process.env.PostsDir = cli.flags.postsDir;
 process.env.ImgDir = cli.flags.imgDir;
+process.env.UpdateDataFile = cli.flags.updateDataFile;
 
 script.playlist({}, null, (err, callback) => {
   if (err) {

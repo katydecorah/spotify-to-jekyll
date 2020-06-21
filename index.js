@@ -18,8 +18,11 @@ module.exports.playlist = (event, context, callback) => {
     .then(module.exports.formatTracks)
     // create new post
     .then((data) => module.exports.createPost(data))
-    // save tracks to playlists.yml
-    .then((data) => module.exports.updateMain(data))
+    .then((data) => {
+      // save tracks to playlists.yml (optional)
+      if (process.env.UpdateDataFile) return module.exports.updateMain(data);
+      else return data;
+    })
     // save image to imgDir
     .then((data) => module.exports.saveImage(data))
     .then((data) => callback(null, data))
@@ -87,7 +90,16 @@ module.exports.createPost = (data) => {
 };
 
 module.exports.buildPost = (data) => {
-  let contents = `---\ntitle: ${data.name}\nspotify: ${data.url}\nimage: ${process.env.ImgDir}/${data.formatted_name}.png\npermalink: /playlists/${data.formatted_name}/\n---\n\n[Listen on Spotify](${data.url})\n\n`;
+  let contents = `---
+title: ${data.name}
+spotify: ${data.url}
+image: ${data.formatted_name}.png
+permalink: /playlists/${data.formatted_name}/
+---
+
+[Listen on Spotify](${data.url})
+
+`;
   data.tracks.map((track) => {
     contents += `* ${track.name}, ${track.artist}\n`;
   });
