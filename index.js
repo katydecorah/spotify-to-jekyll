@@ -20,7 +20,8 @@ module.exports.playlist = (event, context, callback) => {
     .then((data) => module.exports.createPost(data))
     .then((data) => {
       // save tracks to playlists.yml (optional)
-      if (process.env.UpdateDataFile) return module.exports.updateMain(data);
+      if (process.env.UpdateDataFile === true)
+        return module.exports.updateMain(data);
       else return data;
     })
     // save image to imgDir
@@ -137,7 +138,7 @@ module.exports.saveImage = (data) => {
     Jimp.read(data.image, (err, img) => {
       if (err) return reject(err);
       img.rgba(false).write(`${process.env.ImgDir}/${data.formatted_name}.png`);
-      resolve("done!");
+      resolve("Done!");
     });
   });
 };
