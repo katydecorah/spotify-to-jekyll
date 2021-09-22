@@ -6,7 +6,8 @@
   "scripts": {
     "test": "tape test/*.js && eslint *.js test/*.js",
     "lint": "eslint *.js test/*.js",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "prepare": "husky install"
   },
   "bin": {
     "spotify-to-jekyll": "cli.js"
@@ -16,19 +17,14 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.3.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "husky": "^4.2.5",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "^7.0.0",
     "minimist": "^1.2.5",
     "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1",
+    "pretty-quick": "^3.1.1",
     "request": "^2.88.2",
     "tape": "^5.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "dependencies": {
     "jimp": "^0.13.0",
