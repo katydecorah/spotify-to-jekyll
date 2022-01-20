@@ -22,7 +22,23 @@ const formatted = {
 };
 
 test("[buildPost]", () => {
-  expect(buildPost(formatted)).toEqual(
-    "---\ntitle: 2017/2018 Winter\nspotify: https://open.spotify.com/user/katydecorah/playlist/0EXTe6h9sAjUkX1kwpE2y3\nimage: 2017-2018-winter.png\npermalink: /playlists/2017-2018-winter/\n---\n\n[Listen on Spotify](https://open.spotify.com/user/katydecorah/playlist/0EXTe6h9sAjUkX1kwpE2y3)\n\n* Black Willow - Single Version, Loma\n* Trophy Daughter, Sur Back\n* Truth Hurts, Lizzo\n* Fleas, Babeo Baggins\n* Night Shift, Lucy Dacus\n* 4EVA, Lapalux, Talvi\n* Breezeblocks, alt-J\n"
-  );
+  expect(buildPost(formatted)).toMatchInlineSnapshot(`
+    "---
+    title: 2017/2018 Winter
+    spotify: https://open.spotify.com/user/katydecorah/playlist/0EXTe6h9sAjUkX1kwpE2y3
+    image: 2017-2018-winter.png
+    permalink: /playlists/2017-2018-winter/
+    ---
+
+    [Listen on Spotify](https://open.spotify.com/user/katydecorah/playlist/0EXTe6h9sAjUkX1kwpE2y3)
+
+    * Black Willow - Single Version, Loma
+    * Trophy Daughter, Sur Back
+    * Truth Hurts, Lizzo
+    * Fleas, Babeo Baggins
+    * Night Shift, Lucy Dacus
+    * 4EVA, Lapalux, Talvi
+    * Breezeblocks, alt-J
+    "
+  `);
 });
