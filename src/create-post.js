@@ -15,7 +15,7 @@ export default async function createPost(data) {
 }
 
 export function buildPost(data) {
-  let contents = `---
+  return `---
 title: ${data.name}
 spotify: ${data.url}
 image: ${data.formatted_name}.png
@@ -24,9 +24,6 @@ permalink: /playlists/${data.formatted_name}/
 
 [Listen on Spotify](${data.url})
 
+${data.tracks.map((track) => `* ${track.name}, ${track.artist}`).join("\n")}
 `;
-  data.tracks.map((track) => {
-    contents += `* ${track.name}, ${track.artist}\n`;
-  });
-  return contents;
 }

@@ -28,8 +28,7 @@
   "dependencies": {
     "jimp": "^0.16.1",
     "meow": "^10.1.2",
-    "spotify-web-api-node": "^5.0.2",
-    "underscore": "^1.13.2"
+    "spotify-web-api-node": "^5.0.2"
   },
   "directories": {
     "test": "test"
