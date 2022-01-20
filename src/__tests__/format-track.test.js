@@ -26,7 +26,7 @@ const formatted = {
 };
 
 test("[formatTracks]", async () => {
-  expect(await formatTracks(res)).toEqual(formatted);
+  expect(formatTracks(res)).toEqual(formatted);
 });
 
 test("[getTracks]", () => {
