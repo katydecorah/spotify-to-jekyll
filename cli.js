@@ -1,25 +1,23 @@
 #!/usr/bin/env node
 
-"use strict";
-
-const meow = require("meow");
-const script = require("./index.js");
+import meow from "meow";
+import playlist from "./src/index.js";
 
 const cli = meow(
   `
-	Usage
-	  $ spotify-to-jekyll <playlist_id>
+Usage
+  $ spotify-to-jekyll <playlist_id>
 
-	Options
-      --postsDir, -p  Relative path to your _posts folder
-			--imgDir, -i  Relative path to your images folder
-			--updateDataFile, -d  Update a data file with your playlist data
+Options
+    --postsDir, -p  Relative path to your _posts folder
+    --imgDir, -i  Relative path to your images folder
+    --updateDataFile, -d  Update a data file with your playlist data
 
-	Examples
-	  $ spotify-to-jekyll 0000111100001111
-		$ spotify-to-jekyll 0000111100001111 --postsDir=_posts
-`,
+Examples
+  $ spotify-to-jekyll 0000111100001111
+  $ spotify-to-jekyll 0000111100001111 --postsDir=_posts`,
   {
+    importMeta: import.meta,
     flags: {
       postsDir: {
         type: "string",
@@ -42,7 +40,7 @@ const cli = meow(
 
 if (!cli.input.length) {
   console.log(cli.help);
-  return;
+  process.exit(1);
 }
 
 process.env.SpotifyPlaylist = cli.input;
@@ -50,10 +48,12 @@ process.env.PostsDir = cli.flags.postsDir;
 process.env.ImgDir = cli.flags.imgDir;
 process.env.UpdateDataFile = cli.flags.updateDataFile;
 
-script.playlist({}, null, (err, callback) => {
-  if (err) {
+(async () => {
+  try {
+    await playlist();
+    console.log("Downloaded playlist");
+  } catch (err) {
     console.error(err);
     process.exit(1);
   }
-  console.log(callback);
-});
+})();
