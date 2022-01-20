@@ -1,3 +1,6 @@
 test
 .eslintrc
 .github
+.husky
+babel.config.cjs
+__tests__
