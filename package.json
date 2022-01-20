@@ -3,9 +3,10 @@
   "version": "0.4.1",
   "description": "Turn a Spotify playlist into a Jekyll post",
   "main": "cli.js",
+  "type": "module",
   "scripts": {
-    "test": "tape test/*.js && eslint *.js test/*.js",
-    "lint": "eslint *.js test/*.js",
+    "test": "jest",
+    "pretest": "eslint .",
     "pretty-quick": "pretty-quick",
     "prepare": "husky install"
   },
@@ -15,23 +16,22 @@
   "author": "Katy DeCorah",
   "license": "ISC",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.3.0",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.10",
+    "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.7",
     "minimist": "^1.2.5",
-    "prettier": "^2.0.5",
-    "pretty-quick": "^3.1.1",
-    "request": "^2.88.2",
-    "tape": "^5.0.1"
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "request": "^2.88.2"
   },
   "dependencies": {
-    "jimp": "^0.13.0",
-    "meow": "^7.0.1",
-    "moment": "^2.27.0",
-    "spotify-web-api-node": "^4.0.0",
-    "underscore": "^1.10.2"
+    "jimp": "^0.16.1",
+    "meow": "^10.1.2",
+    "spotify-web-api-node": "^5.0.2",
+    "underscore": "^1.13.2"
   },
   "directories": {
     "test": "test"
